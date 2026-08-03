@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lina Orundas — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Mrs+Saint+Delafield&family=Space+Mono:wght@400;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FBF7F4; --ink:#0c0c0c; --ink-soft:#413f3c;
+  --pink:#EC3FA0; --pink-soft:#F6A8CF; --blue:#2323EF; --purple:#7B5CFF;
+  --green:#3d6b3f; --green-bright:#6fbf5f; --blush:#F3D7E0; --line:rgba(12,12,12,.13);
+  --fs-hero: clamp(3rem, 10vw, 8rem);
+  --fs-h1: clamp(2.1rem, 4.6vw, 3.6rem);
+  --fs-lede: clamp(1.3rem, 2.2vw, 1.7rem);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{background:var(--cream); scroll-behavior:smooth;}
+body{background:var(--cream); color:var(--ink); font-family:'Poppins',sans-serif; overflow-x:hidden; line-height:1.6;}
+a{color:inherit; text-decoration:none;} img{display:block; max-width:100%;}
+h1,h2,h3,.display{font-family:'Anton',sans-serif; text-transform:uppercase; line-height:.94;}
+.script{font-family:'Mrs Saint Delafield',cursive; text-transform:none; line-height:1;}
+.eyebrow{font-family:'Space Mono',monospace; text-transform:uppercase; letter-spacing:.18em; font-size:.7rem; font-weight:700;}
+.wrap{max-width:1280px; margin:0 auto; padding:0 6vw;}
+::selection{background:var(--pink); color:#fff;}
+
+/* progress bar — playful gamified touch */
+#progress{position:fixed; top:0; left:0; height:4px; width:0%; z-index:1200;
+  background:linear-gradient(90deg, var(--pink), var(--purple), var(--blue)); transition:width .1s linear;}
+
+/* nav */
+#nav{position:fixed; top:0; left:0; right:0; z-index:1000; display:flex; align-items:center; justify-content:space-between;
+  padding:16px 5vw; background:rgba(251,247,244,.86); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);
+  transition:transform .4s ease;}
+#nav.hide{transform:translateY(-100%);}
+.logo-mark{font-family:'Mrs Saint Delafield',cursive; font-size:1.6rem; color:var(--pink);}
+#nav ul{list-style:none; display:flex; align-items:center; gap:24px;}
+#nav a{font-family:'Space Mono',monospace; font-size:.66rem; text-transform:uppercase; letter-spacing:.1em; position:relative; padding-bottom:3px;}
+#nav a::after{content:''; position:absolute; left:0; bottom:0; height:2px; width:0; background:var(--pink); transition:width .3s;}
+#nav a:hover::after, #nav a.active::after{width:100%;}
+.nav-li{display:flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:50%; background:var(--ink); color:#fff; font-family:'Space Mono',monospace; font-size:.6rem; font-weight:700;}
+.nav-toggle{display:none; font-family:'Space Mono',monospace; font-size:.68rem; border:1px solid var(--ink); padding:7px 12px; border-radius:100px; background:none;}
+
+/* marquee */
+.marquee{overflow:hidden; white-space:nowrap; background:var(--pink); padding:13px 0; border-top:1px solid var(--ink); border-bottom:1px solid var(--ink);}
+.marquee.alt{background:var(--blue);} .marquee.green{background:var(--green-bright);} .marquee.purple{background:var(--purple);}
+.marquee-track{display:inline-flex; gap:2.4rem; animation:scroll-l 24s linear infinite;}
+.marquee.rev .marquee-track{animation:scroll-r 27s linear infinite;}
+.marquee span{font-family:'Anton',sans-serif; font-size:1rem; color:#fff; text-transform:uppercase; display:inline-flex; align-items:center; gap:2.4rem;}
+@keyframes scroll-l{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@keyframes scroll-r{from{transform:translateX(-50%);}to{transform:translateX(0);}}
+
+/* reveal */
+.reveal{opacity:0; transform:translateY(44px); transition:opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1);}
+.reveal.left{transform:translateX(-60px) translateY(0);} .reveal.right{transform:translateX(60px) translateY(0);}
+.reveal.in{opacity:1; transform:translate(0,0);} .reveal.d1{transition-delay:.1s;} .reveal.d2{transition-delay:.2s;}
+
+/* hero */
+#hero{position:relative; padding-top:110px;}
+.hero-row{display:flex; justify-content:space-between; align-items:center; gap:4vw;}
+.hero-title{font-size:var(--fs-hero);}
+.hero-photo{width:min(220px,24vw); border-radius:16px; overflow:hidden; flex:0 0 auto; box-shadow:0 24px 50px rgba(0,0,0,.18); transform:rotate(3deg);}
+.hero-photo img{width:100%; aspect-ratio:4/5; object-fit:cover;}
+.hero-sub{display:flex; justify-content:space-between; align-items:flex-end; margin-top:22px; padding-bottom:34px; flex-wrap:wrap; gap:16px;}
+.hero-sub p{max-width:380px; color:var(--ink-soft); font-size:1rem;}
+.hero-sig{font-size:clamp(1.8rem,4vw,2.6rem); color:var(--pink);}
+
+/* section generic */
+section.block{padding:100px 0; position:relative;}
+.tint-blush{background:var(--blush);} .tint-ink{background:var(--ink); color:var(--cream);}
+.tint-ink .eyebrow{color:var(--green-bright);}
+.section-head{display:flex; flex-wrap:wrap; align-items:baseline; gap:16px; margin-bottom:34px;}
+.section-head h2{font-size:var(--fs-h1);}
+.section-head .script{font-size:calc(var(--fs-h1) * .78); color:var(--pink);}
+.num-tag{font-family:'Space Mono',monospace; font-size:.72rem; letter-spacing:.1em; border:1px solid currentColor; border-radius:100px; padding:5px 13px;}
+
+.two-col{display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:center;}
+.two-col.rev{grid-template-columns:.9fr 1.1fr;} .two-col.rev .media{order:2;}
+.media{border-radius:16px; overflow:hidden;}
+.media img, .media video{width:100%; display:block; transition:transform .6s ease;}
+.media:hover img, .media:hover video{transform:scale(1.04);}
+p.lead{font-size:1rem; line-height:1.7; color:inherit; opacity:.92; margin-bottom:14px;}
+.chip-row{display:flex; flex-wrap:wrap; gap:9px; margin-top:18px;}
+.chip{font-family:'Space Mono',monospace; font-size:.66rem; letter-spacing:.06em; text-transform:uppercase; padding:7px 13px; border-radius:100px; border:1px solid currentColor;}
+
+/* focus grid */
+.focus-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+@media (max-width:760px){.focus-grid{grid-template-columns:repeat(2,1fr);}}
+.focus-card{border:1px solid var(--line); border-radius:16px; padding:26px 20px; background:var(--cream); transition:transform .3s ease, background .3s ease, color .3s ease;}
+.focus-card:hover{transform:translateY(-6px); background:var(--ink); color:var(--cream);}
+.focus-card .fn{font-family:'Space Mono',monospace; font-size:.68rem; color:var(--pink);}
+.focus-card h3{font-size:1.5rem; margin-top:8px;}
+
+/* collage */
+.collage{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:18px;}
+.collage img{border-radius:12px; height:210px; object-fit:cover; transition:transform .4s ease;}
+.collage>div:nth-child(odd){transform:translateY(-14px) rotate(-1.4deg);}
+.collage>div:nth-child(even){transform:translateY(8px) rotate(1.4deg);}
+.collage>div:hover img{transform:scale(1.06);}
+
+/* bag — gamified */
+.bag-counter{display:inline-flex; align-items:center; gap:10px; font-family:'Space Mono',monospace; font-size:.78rem; background:var(--ink); color:var(--cream); padding:8px 16px; border-radius:100px; margin-bottom:24px;}
+.bag-counter .dotcheck{width:8px;height:8px;border-radius:50%; background:var(--green-bright);}
+.tools-grid{display:grid; grid-template-columns:repeat(6,1fr); gap:12px;}
+@media (max-width:760px){.tools-grid{grid-template-columns:repeat(3,1fr);}}
+.tool{position:relative; background:var(--cream); border:1px solid var(--line); border-radius:14px; padding:16px 8px 14px; text-align:center;
+  font-family:'Space Mono',monospace; font-size:.63rem; letter-spacing:.05em; text-transform:uppercase; cursor:pointer;
+  transition:transform .25s cubic-bezier(.3,1.6,.4,1), background .3s, color .3s, border-color .3s; user-select:none;}
+.tool:hover{transform:translateY(-4px);}
+.tool.got{background:var(--pink); color:#fff; border-color:var(--pink); transform:scale(1.06) rotate(-2deg);}
+.tool .badge{position:absolute; top:-7px; right:-7px; width:18px; height:18px; border-radius:50%; background:var(--green-bright);
+  color:#fff; font-size:.6rem; display:none; align-items:center; justify-content:center;}
+.tool.got .badge{display:flex;}
+
+/* social/uiux/motion shared with two-col */
+.phone-note{margin-top:14px; font-size:.85rem; color:var(--ink-soft); font-style:italic;}
+
+/* contact */
+.contact-links-row{display:flex; flex-wrap:wrap; gap:12px; margin-top:24px;}
+.btn{display:inline-flex; align-items:center; gap:8px; font-family:'Space Mono',monospace; text-transform:uppercase; letter-spacing:.08em; font-size:.72rem;
+  background:var(--ink); color:var(--cream); padding:13px 22px; border-radius:100px; transition:transform .2s ease, background .2s ease;}
+.btn:hover{transform:translateY(-3px); background:var(--pink);}
+.btn.light{background:transparent; color:var(--ink); border:1px solid var(--ink);}
+.btn.light:hover{background:var(--ink); color:var(--cream);}
+.btn.linkedin{background:#0A66C2;} .btn.linkedin:hover{background:var(--pink);}
+
+/* footer */
+#footer{position:relative; background:var(--ink); color:var(--cream); padding:90px 0 40px; overflow:hidden;}
+#footer .footer-bg{position:absolute; inset:0; opacity:.25; object-fit:cover; width:100%; height:100%;}
+#footer .inner{position:relative; z-index:2;}
+#footer .script{color:var(--pink-soft); font-size:clamp(2.6rem,9vw,6rem);}
+#footer h2.display{font-size:clamp(2.8rem,10vw,7rem); color:var(--cream);}
+.footer-links{display:flex; justify-content:space-between; flex-wrap:wrap; gap:18px; margin-top:50px; padding-top:22px;
+  border-top:1px solid rgba(255,255,255,.15); font-family:'Space Mono',monospace; font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; color:var(--green-bright); position:relative; z-index:2;}
+
+@media (max-width:880px){
+  #nav ul{position:fixed; top:60px; left:0; right:0; background:var(--cream); flex-direction:column; align-items:flex-start; padding:18px 6vw; gap:14px;
+    transform:translateY(-130%); transition:transform .4s ease; border-bottom:1px solid var(--line);}
+  #nav ul.open{transform:translateY(0);}
+  .nav-toggle{display:inline-block;}
+  .two-col,.two-col.rev{grid-template-columns:1fr;} .two-col.rev .media{order:0;}
+  .hero-photo{display:none;}
+  .collage{grid-template-columns:repeat(2,1fr);}
+  .focus-grid{grid-template-columns:repeat(2,1fr);}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<nav id="nav">
+  <a href="#hero" class="logo-mark">Lina.</a>
+  <button class="nav-toggle" id="navToggle">Menu</button>
+  <ul id="navList">
+    <li><a href="#about">About</a></li>
+    <li><a href="#focus">Focus</a></li>
+    <li><a href="#passion">Design</a></li>
+    <li><a href="#branding">Branding</a></li>
+    <li><a href="#photography">Photo</a></li>
+    <li><a href="#uiux">UI/UX</a></li>
+    <li><a href="#bag">Bag</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://www.linkedin.com/in/linaorundas" target="_blank" class="nav-li" title="LinkedIn">in</a></li>
+  </ul>
+</nav>
+
+<header id="top" id="hero" class="wrap">
+  <div class="hero-row">
+    <h1 class="hero-title display reveal">Portfolio</h1>
+    <!-- SWAP: hero portrait, 4:5 ratio -->
+    <div class="hero-photo reveal right"><img src="IMG:lina_photo" alt="Lina Orundas"></div>
+  </div>
+  <div class="hero-sub">
+    <p class="reveal d1">Where imagination meets execution — design, branding, photography &amp; motion, under one creative practice.</p>
+    <div class="hero-sig script">Lina Orundas</div>
+  </div>
+</header>
+
+<div class="marquee"><div class="marquee-track">
+  <span>✦ Lina Orundas 2026 ✦ Graphic Design ✦ Branding ✦ Web &amp; UX ✦ Photography ✦ Motion</span>
+  <span>✦ Lina Orundas 2026 ✦ Graphic Design ✦ Branding ✦ Web &amp; UX ✦ Photography ✦ Motion</span>
+</div></div>
+
+<!-- ABOUT -->
+<section id="about" class="block">
+  <div class="wrap">
+    <div class="section-head reveal"><h2>About</h2><span class="script">Me</span><span class="num-tag">01</span></div>
+    <div class="two-col">
+      <div class="media reveal left"><!-- SWAP: about photo, 4:5 --><img src="IMG:lina_photo" alt="About Lina"></div>
+      <div class="reveal right d1">
+        <p class="lead">I'm a multidisciplinary creative focused on web design, UX/UI, digital marketing, and visual storytelling — turning ideas into engaging, user-centered digital experiences.</p>
+        <p class="lead">Beyond the digital space, illustration, music production, and photography keep shaping how I see and make things.</p>
+        <div class="chip-row"><span class="chip">Web Design</span><span class="chip">UX / UI</span><span class="chip">Branding</span><span class="chip">Content</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOCUS -->
+<section id="focus" class="block tint-blush">
+  <div class="wrap">
+    <div class="section-head reveal"><h2>What I</h2><span class="script">Focus On</span><span class="num-tag">02</span></div>
+    <div class="focus-grid">
+      <div class="focus-card reveal"><span class="fn">01</span><h3>Photography</h3></div>
+      <div class="focus-card reveal d1"><span class="fn">02</span><h3>Art Direction</h3></div>
+      <div class="focus-card reveal d2"><span class="fn">03</span><h3>Branding</h3></div>
+      <div class="focus-card reveal"><span class="fn">04</span><h3>UI / UX</h3></div>
+      <div class="focus-card reveal d1"><span class="fn">05</span><h3>Social Media</h3></div>
+      <div class="focus-card reveal d2"><span class="fn">06</span><h3>Motion</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- PASSION -->
+<section id="passion" class="block">
+  <div class="wrap">
+    <div class="section-head reveal"><h2>Graphic Design Is My</h2><span class="script">Passion</span><span class="num-tag">03</span></div>
+    <div class="two-col rev">
+      <div class="media reveal right"><!-- SWAP: graphic design cover --><img src="IMG:passion" alt="Graphic design"></div>
+      <div class="reveal left d1">
+        <p class="lead">Magazine covers, layouts, and visual compositions where typography and imagery come together to tell a story — clean, engaging, thoughtful, and always originally created by me.</p>
+        <div class="chip-row"><span class="chip">Editorial Layout</span><span class="chip">Typography</span><span class="chip">Moodboards</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee green"><div class="marquee-track">
+  <span>★ Editorial ★ Layout ★ Typography ★ Moodboard ★ Composition ★</span>
+  <span>★ Editorial ★ Layout ★ Typography ★ Moodboard ★ Composition ★</span>
+</div></div>
+
+<!-- BRANDING -->
+<section id="branding" class="block tint-ink">
+  <div class="wrap">
+    <div class="section-head reveal"><h2 style="color:var(--cream)">Branding</h2><span class="script" style="color:var(--pink-soft)">&amp; Identity</span><span class="num-tag">04</span></div>
+    <div class="two-col">
+      <div class="reveal left">
+        <p class="lead" style="opacity:.85">Branding is more than a logo — it's shaping identity, emotion and perception, rebuilding an idea from its core.</p>
+        <p class="lead" style="opacity:.85">Logo design, visual identity systems, typography and guidelines, all developed through research so each brand feels intentional and memorable.</p>
+      </div>
+      <div class="media reveal right d1"><!-- SWAP: branding project cover --><img src="IMG:branding" alt="Branding"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTOGRAPHY -->
+<section id="photography" class="block tint-blush">
+  <div class="wrap">
+    <div class="section-head reveal"><h2>Photography</h2><span class="script">&amp; Visual</span><span class="num-tag">05</span></div>
+    <p class="lead reveal" style="max-width:600px;">Original photography exploring identity, space and texture — composition and lighting that hold up as strong, independent visuals.</p>
+    <div class="collage">
+      <!-- SWAP: 4 photography images -->
+      <div class="reveal"><img src="IMG:photography" alt="Photo 1"></div>
+      <div class="reveal d1"><img src="IMG:social" alt="Photo 2"></div>
+      <div class="reveal d2"><img src="IMG:passion" alt="Photo 3"></div>
+      <div class="reveal"><img src="IMG:branding" alt="Photo 4"></div>
+    </div>
+    <p style="margin-top:14px; font-style:italic; opacity:.6; font-size:.82rem;">All images are original work and remain under full ownership.</p>
+  </div>
+</section>
+
+<!-- UI/UX -->
+<section id="uiux" class="block">
+  <div class="wrap">
+    <div class="section-head reveal"><h2>UI / UX &amp;</h2><span class="script" style="color:var(--blue)">Interfaces</span><span class="num-tag">06</span></div>
+    <div class="two-col rev">
+      <div class="media reveal right"><!-- SWAP: UI/UX cover --><img src="IMG:uiux" alt="UI UX"></div>
+      <div class="reveal left d1">
+        <p class="lead">Intuitive, purposeful digital interfaces — onboarding flows, app screens, and product design where every interaction earns its place.</p>
+        <a class="btn light" href="https://www.behance.net/linaorundas" target="_blank">Full case studies on Behance →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOTION -->
+<section id="motion" class="block tint-ink">
+  <div class="wrap">
+    <div class="section-head reveal"><h2 style="color:var(--cream)">Motion</h2><span class="script" style="color:var(--pink-soft)">Design</span><span class="num-tag">07</span></div>
+    <div class="two-col">
+      <div class="reveal left">
+        <p class="lead" style="opacity:.85">Motion graphics that bring static visuals to life through rhythm and storytelling — After Effects and Premiere Pro, from concept to sound design.</p>
+      </div>
+      <div class="media reveal right d1"><!-- SWAP: looping gif-style clip --><video src="VID:photobooth" autoplay loop muted playsinline></video></div>
+    </div>
+  </div>
+</section>
+
+<!-- BAG — GAMIFIED -->
+<section id="bag" class="block tint-blush">
+  <div class="wrap">
+    <div class="section-head reveal"><h2>What's In</h2><span class="script">My Bag?</span><span class="num-tag">08</span></div>
+    <p class="lead reveal" style="max-width:580px;">Tap the tools I actually use — Figma, the Adobe Suite, and a few extras — to collect them.</p>
+    <div class="bag-counter reveal"><span class="dotcheck"></span><span id="bagCount">0 / 12 Collected</span></div>
+    <div class="tools-grid reveal">
+      <div class="tool" data-tool>Figma<span class="badge">✓</span></div>
+      <div class="tool" data-tool>Photoshop<span class="badge">✓</span></div>
+      <div class="tool" data-tool>Illustrator<span class="badge">✓</span></div>
+      <div class="tool" data-tool>InDesign<span class="badge">✓</span></div>
+      <div class="tool" data-tool>After Effects<span class="badge">✓</span></div>
+      <div class="tool" data-tool>Premiere Pro<span class="badge">✓</span></div>
+      <div class="tool" data-tool>Lightroom<span class="badge">✓</span></div>
+      <div class="tool" data-tool>Animate<span class="badge">✓</span></div>
+      <div class="tool" data-tool>Canva<span class="badge">✓</span></div>
+      <div class="tool" data-tool>VS Code<span class="badge">✓</span></div>
+      <div class="tool" data-tool>GitHub<span class="badge">✓</span></div>
+      <div class="tool" data-tool>Instagram<span class="badge">✓</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="block">
+  <div class="wrap">
+    <div class="section-head reveal"><h2>Recognition &amp;</h2><span class="script">Feedback</span><span class="num-tag">09</span></div>
+    <div class="two-col">
+      <div class="reveal left">
+        <p class="lead">Encouraging feedback and recognition from clients, collaborators and creative spaces — but for me, it's about work that connects and makes a real impact.</p>
+        <p class="lead">Always open to creative collaborations, freelance projects, or anything meaningful — feel free to reach out.</p>
+        <div class="contact-links-row">
+          <a class="btn" href="mailto:linaorundas70@gmail.com">Email Me →</a>
+          <a class="btn linkedin" href="https://www.linkedin.com/in/linaorundas" target="_blank">LinkedIn</a>
+          <a class="btn light" href="https://www.behance.net/linaorundas" target="_blank">Behance</a>
+        </div>
+      </div>
+      <div class="media reveal right d1"><!-- SWAP: contact photo --><img src="IMG:lina_photo" alt="Lina Orundas"></div>
+    </div>
+  </div>
+</section>
+
+<footer id="footer">
+  <!-- SWAP: full-bleed footer background -->
+  <img class="footer-bg" src="IMG:thankyou" alt="">
+  <div class="inner wrap">
+    <span class="eyebrow" style="color:var(--green-bright)">Creativity Is Best When Shared</span>
+    <h2 class="display" style="margin-top:10px;">Thank<span class="script"> You</span></h2>
+  </div>
+  <div class="footer-links wrap">
+    <span>All work © Lina Orundas — remains her intellectual property.</span>
+    <span>linaorundas70@gmail.com</span>
+  </div>
+</footer>
+
+<script>
+  // reveal on scroll
+  const io = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); }); }, {threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // nav hide/show + active link + scroll progress bar
+  let lastY = window.scrollY;
+  const nav = document.getElementById('nav');
+  const progress = document.getElementById('progress');
+  window.addEventListener('scroll', ()=>{
+    const y = window.scrollY;
+    if(y > lastY && y > 120){ nav.classList.add('hide'); } else { nav.classList.remove('hide'); }
+    lastY = y;
+    const h = document.documentElement;
+    const pct = (h.scrollTop || document.body.scrollTop) / ((h.scrollHeight || document.body.scrollHeight) - h.clientHeight) * 100;
+    progress.style.width = pct + '%';
+  });
+
+  // mobile nav
+  const navToggle = document.getElementById('navToggle');
+  const navList = document.getElementById('navList');
+  navToggle.addEventListener('click', ()=> navList.classList.toggle('open'));
+  navList.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> navList.classList.remove('open')));
+
+  // gamified bag — click to collect
+  const tools = document.querySelectorAll('[data-tool]');
+  const bagCount = document.getElementById('bagCount');
+  let collected = 0;
+  tools.forEach(t=>{
+    t.addEventListener('click', ()=>{
+      if(!t.classList.contains('got')){
+        t.classList.add('got'); collected++;
+      } else {
+        t.classList.remove('got'); collected--;
+      }
+      bagCount.textContent = collected + ' / ' + tools.length + ' Collected' + (collected===tools.length ? ' 🎉' : '');
+    });
+  });
+</script>
+</body>
+</html>
