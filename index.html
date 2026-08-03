@@ -25,7 +25,7 @@ h1,h2,h3,.display{font-family:'Anton',sans-serif; text-transform:uppercase; line
 .wrap{max-width:1280px; margin:0 auto; padding:0 6vw;}
 ::selection{background:var(--pink); color:#fff;}
 
-/* progress bar — playful gamified touch */
+/* progress bar */
 #progress{position:fixed; top:0; left:0; height:4px; width:0%; z-index:1200;
   background:linear-gradient(90deg, var(--pink), var(--purple), var(--blue)); transition:width .1s linear;}
 
@@ -45,8 +45,8 @@ h1,h2,h3,.display{font-family:'Anton',sans-serif; text-transform:uppercase; line
 /* marquee */
 .marquee{overflow:hidden; white-space:nowrap; background:var(--pink); padding:13px 0; border-top:1px solid var(--ink); border-bottom:1px solid var(--ink);}
 .marquee.alt{background:var(--blue);} .marquee.green{background:var(--green-bright);} .marquee.purple{background:var(--purple);}
-.marquee-track{display:inline-flex; gap:2.4rem; animation:scroll-l 24s linear infinite;}
-.marquee.rev .marquee-track{animation:scroll-r 27s linear infinite;}
+.marquee-track{display:inline-flex; gap:2.4rem; animation:scroll-l 32s linear infinite;}
+.marquee.rev .marquee-track{animation:scroll-r 35s linear infinite;}
 .marquee span{font-family:'Anton',sans-serif; font-size:1rem; color:#fff; text-transform:uppercase; display:inline-flex; align-items:center; gap:2.4rem;}
 @keyframes scroll-l{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 @keyframes scroll-r{from{transform:translateX(-50%);}to{transform:translateX(0);}}
@@ -63,7 +63,7 @@ h1,h2,h3,.display{font-family:'Anton',sans-serif; text-transform:uppercase; line
 .hero-photo{width:min(220px,24vw); border-radius:16px; overflow:hidden; flex:0 0 auto; box-shadow:0 24px 50px rgba(0,0,0,.18); transform:rotate(3deg);}
 .hero-photo img{width:100%; aspect-ratio:4/5; object-fit:cover;}
 .hero-sub{display:flex; justify-content:space-between; align-items:flex-end; margin-top:22px; padding-bottom:34px; flex-wrap:wrap; gap:16px;}
-.hero-sub p{max-width:380px; color:var(--ink-soft); font-size:1rem;}
+.hero-sub p{max-width:440px; color:var(--ink-soft); font-size:1rem;}
 .hero-sig{font-size:clamp(1.8rem,4vw,2.6rem); color:var(--pink);}
 
 /* section generic */
@@ -99,7 +99,7 @@ p.lead{font-size:1rem; line-height:1.7; color:inherit; opacity:.92; margin-botto
 .collage>div:nth-child(even){transform:translateY(8px) rotate(1.4deg);}
 .collage>div:hover img{transform:scale(1.06);}
 
-/* bag — gamified */
+/* bag */
 .bag-counter{display:inline-flex; align-items:center; gap:10px; font-family:'Space Mono',monospace; font-size:.78rem; background:var(--ink); color:var(--cream); padding:8px 16px; border-radius:100px; margin-bottom:24px;}
 .bag-counter .dotcheck{width:8px;height:8px;border-radius:50%; background:var(--green-bright);}
 .tools-grid{display:grid; grid-template-columns:repeat(6,1fr); gap:12px;}
@@ -112,9 +112,6 @@ p.lead{font-size:1rem; line-height:1.7; color:inherit; opacity:.92; margin-botto
 .tool .badge{position:absolute; top:-7px; right:-7px; width:18px; height:18px; border-radius:50%; background:var(--green-bright);
   color:#fff; font-size:.6rem; display:none; align-items:center; justify-content:center;}
 .tool.got .badge{display:flex;}
-
-/* social/uiux/motion shared with two-col */
-.phone-note{margin-top:14px; font-size:.85rem; color:var(--ink-soft); font-style:italic;}
 
 /* contact */
 .contact-links-row{display:flex; flex-wrap:wrap; gap:12px; margin-top:24px;}
@@ -165,21 +162,29 @@ p.lead{font-size:1rem; line-height:1.7; color:inherit; opacity:.92; margin-botto
   </ul>
 </nav>
 
-<header id="top" id="hero" class="wrap">
+<header id="top" class="wrap">
   <div class="hero-row">
     <h1 class="hero-title display reveal">Portfolio</h1>
-    <!-- SWAP: hero portrait, 4:5 ratio -->
-    <div class="hero-photo reveal right"><img src="IMG:lina_photo" alt="Lina Orundas"></div>
+    
+    <!-- ================================================================= -->
+    <!-- UPLOAD HERE: Replace "images/lina-portrait.jpg" with your portrait image URL or local file path -->
+    <!-- Recommended aspect ratio: vertical/portrait (e.g., 4:5 aspect ratio) -->
+    <!-- ================================================================= -->
+    <div class="hero-photo reveal right">
+      <img src="images/lina-portrait.jpg" alt="Lina Orundas Portrait">
+    </div>
   </div>
+  
   <div class="hero-sub">
-    <p class="reveal d1">Where imagination meets execution — design, branding, photography &amp; motion, under one creative practice.</p>
+    <p class="reveal d1">Where imagination meets precise execution — bridging graphic design, brand strategy, photography, and motion design into one unified creative practice built for modern visual communication.</p>
     <div class="hero-sig script">Lina Orundas</div>
   </div>
 </header>
 
+<!-- TOP MARQUEE (EXPANDED TEXT SPANS) -->
 <div class="marquee"><div class="marquee-track">
-  <span>✦ Lina Orundas 2026 ✦ Graphic Design ✦ Branding ✦ Web  Lina Orundas 2026 ✦ Graphic Design ✦ Branding ✦ Web &amp; UX ✦ Photography ✦ Motion UX ✦ Photography ✦ Motion </span>
-  <span>✦ Lina Orundas 2026 ✦ Graphic Design ✦ Branding ✦ Web Lina Orundas 2026 ✦ Graphic Design ✦ Branding ✦ Web &amp; UX ✦ Photography ✦ Motion UX ✦ Photography ✦ Motion </span>
+  <span>✦ Lina Orundas 2026 Portfolio ✦ Graphic Design &amp; Layout ✦ Brand Systems &amp; Strategy ✦ UI/UX &amp; Web Interfaces ✦ Visual Photography ✦ Motion &amp; Animation ✦ Digital Storytelling</span>
+  <span>✦ Lina Orundas 2026 Portfolio ✦ Graphic Design &amp; Layout ✦ Brand Systems &amp; Strategy ✦ UI/UX &amp; Web Interfaces ✦ Visual Photography ✦ Motion &amp; Animation ✦ Digital Storytelling</span>
 </div></div>
 
 <!-- ABOUT -->
@@ -187,11 +192,16 @@ p.lead{font-size:1rem; line-height:1.7; color:inherit; opacity:.92; margin-botto
   <div class="wrap">
     <div class="section-head reveal"><h2>About</h2><span class="script">Me</span><span class="num-tag">01</span></div>
     <div class="two-col">
-      <div class="media reveal left"><!-- SWAP: about photo, 4:5 --><img src="IMG:lina_photo" alt="About Lina"></div>
+      <div class="media reveal left">
+        <!-- ================================================================= -->
+        <!-- UPLOAD HERE: Replace "images/about-lina.jpg" with an image of yourself or working environment -->
+        <!-- ================================================================= -->
+        <img src="images/about-lina.jpg" alt="About Lina Orundas">
+      </div>
       <div class="reveal right d1">
-        <p class="lead">I'm a multidisciplinary creative focused on web design, UX/UI, digital marketing, and visual storytelling — turning ideas into engaging, user-centered digital experiences.</p>
-        <p class="lead">Beyond the digital space, illustration, music production, and photography keep shaping how I see and make things.</p>
-        <div class="chip-row"><span class="chip">Web Design</span><span class="chip">UX / UI</span><span class="chip">Branding</span><span class="chip">Content</span></div>
+        <p class="lead">I'm a multidisciplinary creative focused on web design, UX/UI, digital marketing, and visual storytelling — turning complex ideas into engaging, intuitive, and user-centered digital experiences.</p>
+        <p class="lead">Beyond the digital canvas, my background in illustration, sound/music production, and editorial photography constantly shapes how I observe details, build rhythm, and craft visual narratives.</p>
+        <div class="chip-row"><span class="chip">Web Design</span><span class="chip">UX / UI</span><span class="chip">Branding</span><span class="chip">Art Direction</span><span class="chip">Content Strategy</span></div>
       </div>
     </div>
   </div>
@@ -217,18 +227,25 @@ p.lead{font-size:1rem; line-height:1.7; color:inherit; opacity:.92; margin-botto
   <div class="wrap">
     <div class="section-head reveal"><h2>Graphic Design Is My</h2><span class="script">Passion</span><span class="num-tag">03</span></div>
     <div class="two-col rev">
-      <div class="media reveal right"><!-- SWAP: graphic design cover --><img src="IMG:passion" alt="Graphic design"></div>
+      <div class="media reveal right">
+        <!-- ================================================================= -->
+        <!-- UPLOAD HERE: Replace "images/graphic-design-cover.jpg" with a poster, magazine layout, or graphic cover -->
+        <!-- ================================================================= -->
+        <img src="images/graphic-design-cover.jpg" alt="Graphic Design Portfolio Sample">
+      </div>
       <div class="reveal left d1">
-        <p class="lead">Magazine covers, layouts, and visual compositions where typography and imagery come together to tell a story — clean, engaging, thoughtful, and always originally created by me.</p>
-        <div class="chip-row"><span class="chip">Editorial Layout</span><span class="chip">Typography</span><span class="chip">Moodboards</span></div>
+        <p class="lead">Magazine covers, poster layouts, and structural compositions where typography and imagery blend seamlessly to articulate a cohesive message. Clean, thoughtful, and expressive work.</p>
+        <p class="lead">I approach every composition with strict attention to hierarchy, typographic grid systems, and negative space to ensure every visual piece conveys real emotional weight.</p>
+        <div class="chip-row"><span class="chip">Editorial Layout</span><span class="chip">Typography</span><span class="chip">Moodboards</span><span class="chip">Print Design</span></div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- MIDDLE MARQUEE (EXPANDED TEXT SPANS) -->
 <div class="marquee green"><div class="marquee-track">
-  <span>★ Editorial ★ Layout ★ Typography ★ Moodboard ★ Composition ★</span>
-  <span>★ Editorial ★ Layout ★ Typography ★ Moodboard ★ Composition ★</span>
+  <span>★ Editorial Design ★ Print &amp; Digital Layout ★ Creative Typography ★ Concept Development ★ Visual Composition ★ Art Direction ★ Custom Layouts ★ Grid Systems</span>
+  <span>★ Editorial Design ★ Print &amp; Digital Layout ★ Creative Typography ★ Concept Development ★ Visual Composition ★ Art Direction ★ Custom Layouts ★ Grid Systems</span>
 </div></div>
 
 <!-- BRANDING -->
@@ -237,10 +254,15 @@ p.lead{font-size:1rem; line-height:1.7; color:inherit; opacity:.92; margin-botto
     <div class="section-head reveal"><h2 style="color:var(--cream)">Branding</h2><span class="script" style="color:var(--pink-soft)">&amp; Identity</span><span class="num-tag">04</span></div>
     <div class="two-col">
       <div class="reveal left">
-        <p class="lead" style="opacity:.85">Branding is more than a logo — it's shaping identity, emotion and perception, rebuilding an idea from its core.</p>
-        <p class="lead" style="opacity:.85">Logo design, visual identity systems, typography and guidelines, all developed through research so each brand feels intentional and memorable.</p>
+        <p class="lead" style="opacity:.85">Branding is far more than just a logo — it's shaping personality, emotion, and public perception by establishing a distinct visual universe from the ground up.</p>
+        <p class="lead" style="opacity:.85">From initial concept and brand strategy to logo design, brand guidelines, and full visual identity systems, every detail is engineered to feel intentional, scalable, and memorable across all mediums.</p>
       </div>
-      <div class="media reveal right d1"><!-- SWAP: branding project cover --><img src="IMG:branding" alt="Branding"></div>
+      <div class="media reveal right d1">
+        <!-- ================================================================= -->
+        <!-- UPLOAD HERE: Replace "images/branding-project.jpg" with your brand identity showcase image -->
+        <!-- ================================================================= -->
+        <img src="images/branding-project.jpg" alt="Branding Showcase Project">
+      </div>
     </div>
   </div>
 </section>
@@ -249,15 +271,22 @@ p.lead{font-size:1rem; line-height:1.7; color:inherit; opacity:.92; margin-botto
 <section id="photography" class="block tint-blush">
   <div class="wrap">
     <div class="section-head reveal"><h2>Photography</h2><span class="script">&amp; Visual</span><span class="num-tag">05</span></div>
-    <p class="lead reveal" style="max-width:600px;">Original photography exploring identity, space and texture — composition and lighting that hold up as strong, independent visuals.</p>
+    <p class="lead reveal" style="max-width:680px;">Original photography exploring texture, mood, light, and architectural space — building cinematic visual narratives through deliberate lighting and framed perspective.</p>
+    
     <div class="collage">
-      <!-- SWAP: 4 photography images -->
-      <div class="reveal"><img src="IMG:photography" alt="Photo 1"></div>
-      <div class="reveal d1"><img src="IMG:social" alt="Photo 2"></div>
-      <div class="reveal d2"><img src="IMG:passion" alt="Photo 3"></div>
-      <div class="reveal"><img src="IMG:branding" alt="Photo 4"></div>
+      <!-- UPLOAD HERE: Photography Image 1 -->
+      <div class="reveal"><img src="images/photo-1.jpg" alt="Photography Specimen 1"></div>
+      
+      <!-- UPLOAD HERE: Photography Image 2 -->
+      <div class="reveal d1"><img src="images/photo-2.jpg" alt="Photography Specimen 2"></div>
+      
+      <!-- UPLOAD HERE: Photography Image 3 -->
+      <div class="reveal d2"><img src="images/photo-3.jpg" alt="Photography Specimen 3"></div>
+      
+      <!-- UPLOAD HERE: Photography Image 4 -->
+      <div class="reveal"><img src="images/photo-4.jpg" alt="Photography Specimen 4"></div>
     </div>
-    <p style="margin-top:14px; font-style:italic; opacity:.6; font-size:.82rem;">All images are original work and remain under full ownership.</p>
+    <p style="margin-top:14px; font-style:italic; opacity:.6; font-size:.82rem;">All photography featured is original work and remains under exclusive legal ownership.</p>
   </div>
 </section>
 
@@ -266,10 +295,16 @@ p.lead{font-size:1rem; line-height:1.7; color:inherit; opacity:.92; margin-botto
   <div class="wrap">
     <div class="section-head reveal"><h2>UI / UX &amp;</h2><span class="script" style="color:var(--blue)">Interfaces</span><span class="num-tag">06</span></div>
     <div class="two-col rev">
-      <div class="media reveal right"><!-- SWAP: UI/UX cover --><img src="IMG:uiux" alt="UI UX"></div>
+      <div class="media reveal right">
+        <!-- ================================================================= -->
+        <!-- UPLOAD HERE: Replace "images/uiux-preview.jpg" with an app interface or web mockup image -->
+        <!-- ================================================================= -->
+        <img src="images/uiux-preview.jpg" alt="UI UX Digital Interface Mockup">
+      </div>
       <div class="reveal left d1">
-        <p class="lead">Intuitive, purposeful digital interfaces — onboarding flows, app screens, and product design where every interaction earns its place.</p>
-        <a class="btn light" href="https://www.behance.net/linaorundas" target="_blank">Full case studies on Behance →</a>
+        <p class="lead">Intuitive, purposeful digital interfaces designed for seamless user interaction — seamless onboarding flows, web platforms, and mobile apps where every element earns its place.</p>
+        <p class="lead">Combining wireframing, interactive prototyping, user research, and sleek design systems to build applications that feel as effortless as they look.</p>
+        <a class="btn light" href="https://www.behance.net/linaorundas" target="_blank" style="margin-top:10px;">Explore Full Case Studies on Behance →</a>
       </div>
     </div>
   </div>
@@ -281,18 +316,24 @@ p.lead{font-size:1rem; line-height:1.7; color:inherit; opacity:.92; margin-botto
     <div class="section-head reveal"><h2 style="color:var(--cream)">Motion</h2><span class="script" style="color:var(--pink-soft)">Design</span><span class="num-tag">07</span></div>
     <div class="two-col">
       <div class="reveal left">
-        <p class="lead" style="opacity:.85">Motion graphics that bring static visuals to life through rhythm and storytelling — After Effects and Premiere Pro, from concept to sound design.</p>
+        <p class="lead" style="opacity:.85">Motion graphics that bring static graphics into motion through dynamic timing, fluidity, and storytelling — utilizing Adobe After Effects and Premiere Pro for animation and audio syncing.</p>
+        <p class="lead" style="opacity:.85">Adding kinetic energy to brand identities, digital campaigns, interactive videos, and social media media assets.</p>
       </div>
-      <div class="media reveal right d1"><!-- SWAP: looping gif-style clip --><video src="VID:photobooth" autoplay loop muted playsinline></video></div>
+      <div class="media reveal right d1">
+        <!-- ================================================================= -->
+        <!-- UPLOAD HERE: Replace "videos/motion-loop.mp4" with your video path or GIF file -->
+        <!-- ================================================================= -->
+        <video src="videos/motion-loop.mp4" autoplay loop muted playsinline></video>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- BAG — GAMIFIED -->
+<!-- BAG -->
 <section id="bag" class="block tint-blush">
   <div class="wrap">
     <div class="section-head reveal"><h2>What's In</h2><span class="script">My Bag?</span><span class="num-tag">08</span></div>
-    <p class="lead reveal" style="max-width:580px;">Tap the tools I actually use — Figma, the Adobe Suite, and a few extras — to collect them.</p>
+    <p class="lead reveal" style="max-width:580px;">Tap the tools and software I rely on daily — Figma, Adobe Creative Cloud, and web tools — to collect them all.</p>
     <div class="bag-counter reveal"><span class="dotcheck"></span><span id="bagCount">0 / 12 Collected</span></div>
     <div class="tools-grid reveal">
       <div class="tool" data-tool>Figma<span class="badge">✓</span></div>
@@ -317,28 +358,36 @@ p.lead{font-size:1rem; line-height:1.7; color:inherit; opacity:.92; margin-botto
     <div class="section-head reveal"><h2>Recognition &amp;</h2><span class="script">Feedback</span><span class="num-tag">09</span></div>
     <div class="two-col">
       <div class="reveal left">
-        <p class="lead">Encouraging feedback and recognition from clients, collaborators and creative spaces — but for me, it's about work that connects and makes a real impact.</p>
-        <p class="lead">Always open to creative collaborations, freelance projects, or anything meaningful — feel free to reach out.</p>
+        <p class="lead">Value driven through positive client feedback and creative partnerships across various artistic industries. For me, success is defined by design that genuinely connects with people.</p>
+        <p class="lead">Always open to creative collaborations, brand identity commissions, freelance opportunities, or creative inquiries — feel free to reach out anytime!</p>
         <div class="contact-links-row">
           <a class="btn" href="mailto:linaorundas70@gmail.com">Email Me →</a>
           <a class="btn linkedin" href="https://www.linkedin.com/in/linaorundas" target="_blank">LinkedIn</a>
           <a class="btn light" href="https://www.behance.net/linaorundas" target="_blank">Behance</a>
         </div>
       </div>
-      <div class="media reveal right d1"><!-- SWAP: contact photo --><img src="IMG:lina_photo" alt="Lina Orundas"></div>
+      <div class="media reveal right d1">
+        <!-- ================================================================= -->
+        <!-- UPLOAD HERE: Replace "images/contact-portrait.jpg" with a closing portrait or graphic image -->
+        <!-- ================================================================= -->
+        <img src="images/contact-portrait.jpg" alt="Lina Orundas Portfolio Closing Image">
+      </div>
     </div>
   </div>
 </section>
 
 <footer id="footer">
-  <!-- SWAP: full-bleed footer background -->
-  <img class="footer-bg" src="IMG:thankyou" alt="">
+  <!-- ================================================================= -->
+  <!-- UPLOAD HERE: Replace "images/footer-bg.jpg" with your full-width background footer image -->
+  <!-- ================================================================= -->
+  <img class="footer-bg" src="images/footer-bg.jpg" alt="Footer Background Art">
+  
   <div class="inner wrap">
     <span class="eyebrow" style="color:var(--green-bright)">Creativity Is Best When Shared</span>
     <h2 class="display" style="margin-top:10px;">Thank<span class="script"> You</span></h2>
   </div>
   <div class="footer-links wrap">
-    <span>All work © Lina Orundas — remains her intellectual property.</span>
+    <span>All work © Lina Orundas — Intellectual Property Rights Reserved.</span>
     <span>linaorundas70@gmail.com</span>
   </div>
 </footer>
@@ -367,7 +416,7 @@ p.lead{font-size:1rem; line-height:1.7; color:inherit; opacity:.92; margin-botto
   navToggle.addEventListener('click', ()=> navList.classList.toggle('open'));
   navList.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> navList.classList.remove('open')));
 
-  // gamified bag — click to collect
+  // gamified bag
   const tools = document.querySelectorAll('[data-tool]');
   const bagCount = document.getElementById('bagCount');
   let collected = 0;
